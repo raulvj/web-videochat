@@ -1,0 +1,29 @@
+<!--
+ Copyright (c) 2014, 2020, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+
+      <!--
+       ** Oracle JET V9.1.0 hybrid mobile application header pattern.
+       ** Please see the Oracle JET Cookbook App Shell: Hybrid Mobile demos for
+       ** more information on how to use this pattern.
+    -->
+
+  <link rel="stylesheet" type="text/css" href="/css/login.css" />
+
+
+<div class="login">
+  	<h1>Login</h1>
+    <form method="post">
+    	<input type="text" name="u" placeholder="Username" data-bind="value : userName" onfocus="this.value= ''" required="required" />
+        <input type="password" name="p" placeholder="Password" data-bind="value : pwd" onfocus="this.value= ''" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large" data-bind="click : login">Entrar</button>
+        <br>
+        <a data-bind="click : goToRegister">Crear cuenta</a>
+        <br>
+        <a data-bind="click : goToDevicesManager">Ir al gestor de dispositivos</a>
+	</form>
+</div>
+
+<!-- <script type="text/javascript" src="js/viewModels/login.js"></script> -->

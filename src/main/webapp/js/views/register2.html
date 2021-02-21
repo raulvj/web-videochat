@@ -1,0 +1,29 @@
+<!--
+ Copyright (c) 2014, 2020, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+
+      <!--
+       ** Oracle JET V9.1.0 hybrid mobile application header pattern.
+       ** Please see the Oracle JET Cookbook App Shell: Hybrid Mobile demos for
+       ** more information on how to use this pattern.
+    -->
+
+  <link rel="stylesheet" type="text/css" href="/css/login.css" />
+
+
+<div class="register">
+  	<h1>Creación de cuenta</h1>
+  	
+  		<form method="put">
+    		<input type="text" name="u" placeholder="Nombre de usuario" data-bind="value : name" required="required" />
+        	<input type="text" name="p" placeholder="Correo electrónico" data-bind="value : email" required="required" />
+        	<input type="password" name="p" placeholder="Contraseña" data-bind="value : pwd1" required="required" />
+        	<input type="password" name="p" placeholder="Repetir contraseña" data-bind="value : pwd2" required="required" />
+        	<a>Avatar: </a> <input type="file" size="50" data-bind="event : {change : setPicture }"><br>
+        	<button id="btnCrearCuenta" type="submit" class="btn btn-primary btn-block btn-large" data-bind="click : register">Registrarse</button>
+		</form>
+  	
+	
+</div>

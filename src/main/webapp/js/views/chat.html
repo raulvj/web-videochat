@@ -1,0 +1,109 @@
+<head>
+	<!-- <link rel="stylesheet" type="text/css" href="/css/custom.css" /> -->
+</head>
+<div class="oj-hybrid-applayout-page">
+	
+	<div class="oj-applayout-fixed-top">
+		<header role="banner" class="oj-hybrid-applayout-header">
+			<oj-module config="[[headerConfig]]"></oj-module>
+		</header>
+	</div>
+	<!-- This is where your main page content will be loaded -->
+	<!-- <script type="text/javascript" src="../js/conversacion.js"></script> -->
+	
+	<div class="oj-applayout-content">
+		<div role="main" class="oj-hybrid-applayout-content">
+			<div class="oj-hybrid-padding">
+				<h1>Fantástico videochat</h1>
+				<span data-bind="html : estadoChatDeTexto"></span> - <span data-bind="html : estadoSignaling"></span><br>
+				<strong data-bind="html : errorChatDeTexto" style="color : red"></strong> -  <strong data-bind="html : errorSignaling" style="color : red"></strong>
+				
+				<!-- ko with : user -->
+				<div class="oj-sm-12">
+					<div class="oj-sm-4">
+						<!-- ko if : picture -->
+							<img data-bind="attr : { src : picture }" width="50" height="50">
+						<!-- /ko -->
+					</div>
+					<div class="oj-sm-4">
+						Conectado como <span data-bind="html : name"></span>
+					</div>
+					<div class="oj-sm-4"></div>
+				</div>
+				<!-- /ko -->
+				
+				<div class="oj-sm-12">
+					<!-- <button data-bind="click : encenderVideoLocal">Habilitar llamadas</button> -->
+					<!-- <button data-bind="click : crearConexion">Crear conexión</button> -->
+				</div>
+				
+				<!-- ko with : chat -->
+					<div class="oj-sm-12 oj-flex">
+						<div class="oj-sm-4">
+							<h4 class="users" >Usuarios</h4>
+							<!-- ko foreach : usuarios -->
+							<div class="userslist">
+								<!-- ko if : picture -->
+									<img data-bind="attr : { src : picture }" width="20" height="20">
+								<!-- /ko -->
+								<a id="user" data-bind="html : name, click : function() { $parent.setRecipient($data); }"></a>
+								<!-- <button id="botonmierda" data-bind="click : function() { $parents[$parents.length-1].enviarOferta($data); }">Enviar oferta</button> -->
+								<button id="btnUser" data-bind="click : function() { $parents[$parents.length-1].llamar($data); }">Hacer llamada</button>
+							</div>
+							<!-- /ko -->						
+						</div>
+						
+						<div class="oj-sm-4">
+							<h4>Mensajes de conexión</h4>
+							<!-- ko with : $parents[$parents.length-1].videochat -->
+								<!-- ko foreach : mensajes -->
+								<div data-bind="html : texto, style : { color :  color }"></div>
+								<!-- /ko -->
+							<!-- /ko -->
+						</div>
+	
+						<div class="oj-sm-4">
+							<h4>Mensajes a todos</h4>
+							<!-- ko foreach : mensajesRecibidos -->
+							<div data-bind="html : $data"></div>
+							<!-- /ko -->
+	
+							<input id="public" type="text" size="50" data-bind="value : mensajeQueVoyAEnviar" placeholder="Escribe tu mensaje" onfocus="this.value= ''">
+							<button data-bind="click : enviarATodos">Enviar mensaje a todos</button>
+							<br>								
+						</div>
+					</div>
+							
+					<div class="oj-sm-12 oj-flex">
+						<div class="oj-sm-4">
+							<h4>Conversaciones privadas</h4>
+							<!-- ko foreach : conversaciones -->
+							<div data-bind="visible : visible">
+								
+	
+								<!-- ko foreach : mensajes -->
+								<div>
+									<span data-bind="html : $data"></span>
+									<!-- <span data-bind="html : texto"></span> -->
+								</div>
+								<!-- /ko -->
+								<!-- ko with : interlocutor -->
+								Chat con <span data-bind="html : $data"></span>
+								<!-- /ko -->
+								<input id="private" type="text" data-bind="value : textoAEnviar" placeholder="Escribe tu mensaje" onfocus="this.value= ''">
+								<button data-bind="click : enviar">Enviar</button>
+							</div>
+							<!-- /ko -->	
+						</div>
+						
+						<div class="oj-sm-8">
+							<h4>Zona de vídeo</h4>
+							<video id="widgetVideoLocal" playsinline autoplay controls mute width="400" height="400"></video>
+							<video id="widgetVideoRemoto" playsinline autoplay controls width="400" height="400"></video>	
+						</div>
+					</div>
+				<!-- /ko -->
+			</div>
+		</div>
+	</div>
+</div>
